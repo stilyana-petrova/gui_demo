@@ -306,9 +306,29 @@ namespace Draw
             }
         }
 
-        private void drawCircleXButton_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            dialogProcessor.AddRandomCircleX();
+            dialogProcessor.AddRandomTrapeze();
+            statusBar.Items[0].Text = "Последно действие: Рисуване на трапец";
+            viewPort.Invalidate();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dialogProcessor.AddRandomRhombus();
+            statusBar.Items[0].Text = "Последно действие: Рисуване на ромб";
+            viewPort.Invalidate();
+        }
+
+        private void mainMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dialogProcessor.AddRandomTrapeze2();
+            statusBar.Items[0].Text = "Последно действие: Рисуване на трапец";
             viewPort.Invalidate();
         }
     }

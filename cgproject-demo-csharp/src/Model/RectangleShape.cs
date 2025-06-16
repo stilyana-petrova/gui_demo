@@ -61,19 +61,12 @@ namespace Draw
             grfx.RotateTransform(RotationAngle);
             grfx.TranslateTransform(-centerX, -centerY);
 
-            PointF right = new PointF(newX, newWidth);
-            PointF left = new PointF(newY, newHeight);
-
             using (SolidBrush brush = new SolidBrush(FillColor))
             using (Pen pen = new Pen(BorderColor, BorderWidth))
             {
                 grfx.FillRectangle(brush, newX, newY, newWidth, newHeight);
                 grfx.DrawRectangle(pen, newX, newY, newWidth, newHeight);
-
-                grfx.DrawLine(pen,right, left);
-
             }
-
 
             grfx.Transform = originalTransform;
         }

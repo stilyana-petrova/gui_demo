@@ -68,8 +68,10 @@
             this.CopyShapeButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.loadButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.viewPort = new Draw.DoubleBufferedPanel();
-            this.drawCircleXButton = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.mainMenu.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.speedMenu.SuspendLayout();
@@ -93,6 +95,7 @@
             this.mainMenu.Size = new System.Drawing.Size(1782, 28);
             this.mainMenu.TabIndex = 1;
             this.mainMenu.Text = "menuStrip1";
+            this.mainMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mainMenu_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -208,7 +211,7 @@
             this.selectColor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("selectColor.BackgroundImage")));
             this.selectColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.selectColor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.selectColor.Location = new System.Drawing.Point(588, 29);
+            this.selectColor.Location = new System.Drawing.Point(715, 28);
             this.selectColor.Name = "selectColor";
             this.selectColor.Size = new System.Drawing.Size(36, 35);
             this.selectColor.TabIndex = 6;
@@ -220,7 +223,7 @@
             this.selectBorderColor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("selectBorderColor.BackgroundImage")));
             this.selectBorderColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.selectBorderColor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.selectBorderColor.Location = new System.Drawing.Point(630, 28);
+            this.selectBorderColor.Location = new System.Drawing.Point(757, 27);
             this.selectBorderColor.Name = "selectBorderColor";
             this.selectBorderColor.Size = new System.Drawing.Size(35, 35);
             this.selectBorderColor.TabIndex = 7;
@@ -230,7 +233,7 @@
             // borderWidthControl
             // 
             this.borderWidthControl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.borderWidthControl.Location = new System.Drawing.Point(681, 34);
+            this.borderWidthControl.Location = new System.Drawing.Point(808, 33);
             this.borderWidthControl.Maximum = new decimal(new int[] {
             10,
             0,
@@ -384,7 +387,7 @@
             // GroupButton
             // 
             this.GroupButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.GroupButton.Location = new System.Drawing.Point(421, 31);
+            this.GroupButton.Location = new System.Drawing.Point(548, 30);
             this.GroupButton.Name = "GroupButton";
             this.GroupButton.Size = new System.Drawing.Size(70, 32);
             this.GroupButton.TabIndex = 23;
@@ -395,7 +398,7 @@
             // UngroupButton
             // 
             this.UngroupButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.UngroupButton.Location = new System.Drawing.Point(497, 30);
+            this.UngroupButton.Location = new System.Drawing.Point(624, 29);
             this.UngroupButton.Name = "UngroupButton";
             this.UngroupButton.Size = new System.Drawing.Size(75, 33);
             this.UngroupButton.TabIndex = 24;
@@ -411,7 +414,7 @@
             this.DeleteShapeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DeleteShapeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteShapeButton.ForeColor = System.Drawing.Color.Maroon;
-            this.DeleteShapeButton.Location = new System.Drawing.Point(760, 31);
+            this.DeleteShapeButton.Location = new System.Drawing.Point(887, 30);
             this.DeleteShapeButton.Margin = new System.Windows.Forms.Padding(0);
             this.DeleteShapeButton.Name = "DeleteShapeButton";
             this.DeleteShapeButton.Size = new System.Drawing.Size(39, 35);
@@ -426,7 +429,7 @@
             this.CopyShapeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CopyShapeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CopyShapeButton.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.CopyShapeButton.Location = new System.Drawing.Point(809, 29);
+            this.CopyShapeButton.Location = new System.Drawing.Point(936, 28);
             this.CopyShapeButton.Margin = new System.Windows.Forms.Padding(0);
             this.CopyShapeButton.Name = "CopyShapeButton";
             this.CopyShapeButton.Size = new System.Drawing.Size(54, 37);
@@ -461,6 +464,28 @@
             this.loadButton.UseVisualStyleBackColor = false;
             this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
+            // button1
+            // 
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(375, 32);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(43, 35);
+            this.button1.TabIndex = 29;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(425, 33);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(34, 33);
+            this.button2.TabIndex = 30;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // viewPort
             // 
             this.viewPort.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -476,15 +501,15 @@
             this.viewPort.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ViewPortMouseMove);
             this.viewPort.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ViewPortMouseUp);
             // 
-            // drawCircleXButton
+            // button3
             // 
-            this.drawCircleXButton.Location = new System.Drawing.Point(376, 32);
-            this.drawCircleXButton.Name = "drawCircleXButton";
-            this.drawCircleXButton.Size = new System.Drawing.Size(39, 23);
-            this.drawCircleXButton.TabIndex = 29;
-            this.drawCircleXButton.Text = "CX";
-            this.drawCircleXButton.UseVisualStyleBackColor = true;
-            this.drawCircleXButton.Click += new System.EventHandler(this.drawCircleXButton_Click);
+            this.button3.Location = new System.Drawing.Point(465, 30);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(77, 54);
+            this.button3.TabIndex = 31;
+            this.button3.Text = "New Trapeze";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // MainForm
             // 
@@ -492,7 +517,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1782, 521);
-            this.Controls.Add(this.drawCircleXButton);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.loadButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.CopyShapeButton);
@@ -580,6 +607,8 @@
         private System.Windows.Forms.Button CopyShapeButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button loadButton;
-        private System.Windows.Forms.Button drawCircleXButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

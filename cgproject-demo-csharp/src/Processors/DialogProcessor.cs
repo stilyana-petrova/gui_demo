@@ -189,17 +189,57 @@ namespace Draw
             ShapeList.Add(star);
         }
 
-        public void AddRandomCircleX()
+        public void AddRandomTrapeze()
         {
             Random rnd = new Random();
             int x = rnd.Next(100, 1000);
             int y = rnd.Next(100, 600);
 
-            CircleX circle = new CircleX(new RectangleF(x, y, 100, 100));
-            circle.FillColor = Color.White;
-            ShapeList.Add(circle);
+            RectangleF rect = new RectangleF(x, y, 120, 80);
+            TrapezeShape trapeze = new TrapezeShape(rect);
+            trapeze.FillColor = Color.White;
+            trapeze.BorderColor = Color.Black;
+
+            ShapeList.Add(trapeze);
+        }
+        public void AddRandomTrapeze2()
+        {
+            Random rnd = new Random();
+            int x = rnd.Next(100, 1000);
+            int y = rnd.Next(100, 600);
+
+            RectangleF rect = new RectangleF(x, y, 120, 80);
+            NewTrapezeShape trapeze = new NewTrapezeShape(rect);
+            trapeze.FillColor = Color.White;
+            trapeze.BorderColor = Color.Black;
+
+            ShapeList.Add(trapeze);
         }
 
+        public void AddRandomRhombus()
+        {
+            Random rand = new Random();
+
+            // Random location and size
+            float x = rand.Next(50, 300);
+            float y = rand.Next(50, 300);
+            float width = rand.Next(50, 150);
+            float height = rand.Next(50, 150);
+
+            RectangleF rect = new RectangleF(x, y, width, height);
+
+            // Create the rhombus
+            RhombusShape rhombus = new RhombusShape(rect)
+            {
+                FillColor = Color.White,
+                BorderColor = Color.Black,
+                BorderWidth = 2f
+            };
+
+            ShapeList.Add(rhombus);
+            Selection = rhombus;
+            Redraw();
+        }
 
 
 
@@ -338,9 +378,28 @@ namespace Draw
 
                         triangle.Rectangle = new RectangleF(minX, minY, maxX - minX, maxY - minY);
                     }
+                    //Ако избраният елемент е трапец
+
+                    if (selection is TrapezeShape trapeze)
+                    {
+                        PointF[] currentPoints = trapeze.Points;
+
+                        for (int i = 0; i < currentPoints.Length; i++)
+                        {
+                            currentPoints[i] = new PointF(currentPoints[i].X + deltaX, currentPoints[i].Y + deltaY);
+                        }
+
+                        trapeze.Points = currentPoints;
+
+                        float minX = currentPoints.Min(ppoint => p.X);
+                        float minY = currentPoints.Min(ppoin => p.Y);
+                        float maxX = currentPoints.Max(ppoint => p.X);
+                        float maxY = currentPoints.Max(ppoint => p.Y);
+
+                        trapeze.Rectangle = new RectangleF(minX, minY, maxX - minX, maxY - minY);
+                    }
 
 
-                   
                 }
             }
         }
@@ -407,6 +466,7 @@ namespace Draw
                     ShapeList.Add(copiedGroup);
                     Selection = copiedGroup; // Селектираме новата група
                 }
+
                 else
                 {
                     Shape copiedShape = Selection.Clone();
